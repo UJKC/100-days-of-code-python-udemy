@@ -1,0 +1,6 @@
+print("Welcome to brand name generator")
+print("Since you came here, it seems you need a name to your pet store. Then this is the place for you.")
+city = input("What is the name of your city? ")
+pet = input("What is the name of your pet? ")
+print("The name of your brand is: "+city+" "+pet)
+print("Thank You")
