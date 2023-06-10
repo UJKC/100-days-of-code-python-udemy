@@ -10,3 +10,5 @@ Warning:
        1 year = 52 weeks
        1 year = 12 months
        1 year = 1 year
+
+3. Tip Calculator
