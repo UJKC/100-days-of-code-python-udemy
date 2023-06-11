@@ -29,3 +29,5 @@ Conditions:
     4. Pepperoni for small Pizza: $2
     5. Pepperoni for Meduim or large Pizza: $3
     6. Extra Cheese for any size Pizza: $1
+
+6. Love Calculator
