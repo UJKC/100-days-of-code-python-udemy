@@ -31,3 +31,5 @@ Conditions:
     6. Extra Cheese for any size Pizza: $1
 
 6. Love Calculator
+
+7. Treasure map
