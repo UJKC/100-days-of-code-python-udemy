@@ -7,4 +7,4 @@ Conditions:
 
 3. Treasure map 2.0
 
-4. 
+4. Rock, Paper, Scissor
