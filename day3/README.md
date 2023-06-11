@@ -19,4 +19,13 @@ Conditions:
 4. Leap year Calculator
 Conditions:
     1. Year should be divisible by 4
-    2. Year shou;d not be divisible by 100 unless divisible by 400
+    2. Year should not be divisible by 100 unless divisible by 400
+
+5. Pizza price
+Conditions:
+    1. Small Pizza: $15
+    2. Medium Pizza: $20
+    3. Large Pizza: $25
+    4. Pepperoni for small Pizza: $2
+    5. Pepperoni for Meduim or large Pizza: $3
+    6. Extra Cheese for any size Pizza: $1
