@@ -9,7 +9,7 @@ def leap(year):
                 print("Month 2 has 28 days")
     else:
         print("Month 2 has 28 days")
-def days(month, year, days1):
+def days(month, year):
     if month == 2:
         leap(year)
     else:
@@ -19,4 +19,4 @@ def days(month, year, days1):
             print(f"Month {month} has {day} days")
 month = int(input("Enter the month: "))
 year = int(input("Enter the year to be considered: "))
-days(month, year, days1)
+days(month, year)
