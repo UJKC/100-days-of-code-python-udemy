@@ -1,4 +1,4 @@
-import data
+import day17.data as data
 import random
 
 def compare(to_be_choosen1, to_be_choosen2):
