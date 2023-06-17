@@ -8,3 +8,9 @@
 Condition:
     1. Same distance
     2. Random Color
+
+5. Spirograph
+
+6. 100 dots
+
+7. Hirst art
