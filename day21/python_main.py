@@ -1,4 +1,5 @@
 import turtle as t
+from food import food
 
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 
@@ -39,3 +40,10 @@ class Turtle_class:
     def moveright(self):
         if self.head.heading() != 180:
             self.head.setheading(0)
+
+    def extend(self):
+        man = t.Turtle(shape='square')
+        man.color('white')
+        man.penup()
+        man.goto(self.allsnakes[-1].pos())
+        self.allsnakes.append(man)
