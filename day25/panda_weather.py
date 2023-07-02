@@ -18,9 +18,6 @@ print(f"Total data: {len(data_list)}")
 print(data.describe())
 print(data.to_dict())
 data_dic = data.to_dict()
-for temperture in data["temp"]:
-    if temperture == MAX_TEMP:
-        break
-    count += 1
-print(f"Day on max Temperature: {data['day'][count]}")
-print("Condition on max Temperature: "+ data["condition"][count])
+print(f"Day and Condition on max Temperature: {data[data['temp'] == MAX_TEMP]}")
+day = data[data['temp'] == MAX_TEMP]
+print("Condition on max Temperature: "+ day["condition"])
