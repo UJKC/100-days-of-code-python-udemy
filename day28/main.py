@@ -67,18 +67,24 @@ def count_down(count):
 
 window = Tk()
 window.title("Pomodoro")
+
 title_label = Label(text="Timer", fg=GREEN, font=("Arial", 50, "bold"))
 title_label.grid(row=0, column=1)
+
 window.config(padx=50, pady=50, bg=YELLOW)
 canvas= Canvas(width=210, height=224, bg=YELLOW, highlightthickness=0)
 photo = PhotoImage(file="day28\\tomato.png")
 canvas.create_image(110, 112, image=photo)
 timer_text = canvas.create_text(112, 135, text="00:00", fill="white", font=("Arial", 30, "bold"))
 canvas.grid(row=1, column=1)
+
 button = Button(text="Start", command=start_timer, highlightthickness=0, bg=YELLOW)
 button.grid(row=2, column=0)
+
 button = Button(text="Reset", command=reset_timer, highlightthickness=0, bg=YELLOW)
 button.grid(row=2, column=2)
+
 check_marks = Label(text="✓", fg=GREEN, font=("Arial", 50, "bold"))
 check_marks.grid(row=3, column=1)
+
 window.mainloop()
