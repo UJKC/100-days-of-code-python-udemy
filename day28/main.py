@@ -8,54 +8,77 @@ YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
 WORK_MIN = 1
 SHORT_BREAK_MIN = 5
-LONG_BREAK_MIN = 1
+LONG_BREAK_MIN = 20
+reps = 0
+timer = 0
 
 # ---------------------------- TIMER RESET ------------------------------- # 
 
+def reset_timer():
+    window.after_cancel(timer)
+    canvas.itemconfig(timer_text, text="00:00")
+    title_label.config(text="Timer")
+    check_marks.config(text="")
+    global reps
+    reps = 0
+
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 
-def starttimer():
-    global COUNT_ass
-    COUNT_ass += 1
-    if COUNT_ass == 1 or COUNT_ass == 3 or COUNT_ass == 5 or COUNT_ass == 7:
-        times = WORK_MIN
-    elif COUNT_ass == 2 or COUNT_ass == 4 or COUNT_ass == 6:
-        times = SHORT_BREAK_MIN
-    else:
-        times = LONG_BREAK_MIN
-    count(times * 60)
+def start_timer():
+    global reps
+    reps += 1
 
-def stoptimer():
-    pass
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
+
+    if reps % 8 == 0:
+        count_down(long_break_sec)
+        title_label.config(text="Break", fg=RED)
+    elif reps % 2 == 0:
+        count_down(short_break_sec)
+        title_label.config(text="Break", fg=PINK)
+    else:
+        count_down(work_sec)
+        title_label.config(text="Work", fg=GREEN)
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 
-def count(time):
-    if time >= 0:
-        minutes = math.floor(time / 60)
-        sec = math.floor(time % 60)
-        if sec < 10:
-            sec = f"0{sec}"
-        canvas.itemconfig(counter, text = f"{minutes}:{sec}")
-        window.after(1000, count, time - 1)
-    starttimer()
+def count_down(count):
+
+    count_min = math.floor(count / 60)
+    count_sec = count % 60
+    if count_sec < 10:
+        count_sec = f"0{count_sec}"
+
+    canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
+    if count > 0:
+        global timer
+        timer = window.after(1000, count_down, count - 1)
+    else:
+        start_timer()
+        marks = ""
+        work_sessions = math.floor(reps/2)
+        for _ in range(work_sessions):
+            marks += "✔"
+        check_marks.config(text=marks)
 
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
 window.title("Pomodoro")
-label = Label(text="Timer", fg=GREEN, font=("Arial", 50, "bold"))
-label.grid(row=0, column=1)
+title_label = Label(text="Timer", fg=GREEN, font=("Arial", 50, "bold"))
+title_label.grid(row=0, column=1)
 window.config(padx=50, pady=50, bg=YELLOW)
 canvas= Canvas(width=210, height=224, bg=YELLOW, highlightthickness=0)
 photo = PhotoImage(file="day28\\tomato.png")
 canvas.create_image(110, 112, image=photo)
-counter = canvas.create_text(112, 135, text="00:00", fill="white", font=("Arial", 30, "bold"))
+timer_text = canvas.create_text(112, 135, text="00:00", fill="white", font=("Arial", 30, "bold"))
 canvas.grid(row=1, column=1)
-button = Button(text="Start", command=starttimer, highlightthickness=0, bg=YELLOW)
+button = Button(text="Start", command=start_timer, highlightthickness=0, bg=YELLOW)
 button.grid(row=2, column=0)
-button = Button(text="Reset", command=stoptimer, highlightthickness=0, bg=YELLOW)
+button = Button(text="Reset", command=reset_timer, highlightthickness=0, bg=YELLOW)
 button.grid(row=2, column=2)
-label = Label(text="✓", fg=GREEN, font=("Arial", 50, "bold"))
-label.grid(row=3, column=1)
+check_marks = Label(text="✓", fg=GREEN, font=("Arial", 50, "bold"))
+check_marks.grid(row=3, column=1)
 window.mainloop()
