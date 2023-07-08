@@ -2,4 +2,4 @@
 
 2. IndexError handling
 
-3.
+3. KeyError handling
