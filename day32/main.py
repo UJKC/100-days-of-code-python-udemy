@@ -23,7 +23,7 @@ with open("day32\\birthdays.csv")as birth:
 
 need = dt.datetime.now()
 for (index, row) in data.iterrows():
-    if (row['year'] == need.year) and (row['month'] == need.month) and (row['day'] == need.day):
+    if (row['month'] == need.month) and (row['day'] == need.day):
 
         random_letter = random.randint(1, 3)
         if random_letter == 1:
