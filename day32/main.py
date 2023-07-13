@@ -26,15 +26,8 @@ for (index, row) in data.iterrows():
     if (row['month'] == need.month) and (row['day'] == need.day):
 
         random_letter = random.randint(1, 3)
-        if random_letter == 1:
-            with open("day32\\letter_templates\\letter_1.txt") as bd:
-                happy = bd.read()
-        elif random_letter == 2:
-            with open("day32\\letter_templates\\letter_2.txt") as bd:
-                happy = bd.read()
-        else:
-            with open("day32\\letter_templates\\letter_3.txt") as bd:
-                happy = bd.read()
+        with open(f"day32\\letter_templates\\letter_{random_letter}.txt") as bd:
+            happy = bd.read()
         hbd = happy.replace(PLACE_HOLDER, row["name"])
 
 
@@ -43,4 +36,4 @@ for (index, row) in data.iterrows():
         with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
             connection.starttls()
             connection.login(user=my_email, password=password)
-            connection.sendmail(from_addr=my_email, to_addrs="", msg=f"Subject:Birthday Wishes\n\n{hbd}")
+            connection.sendmail(from_addr=my_email, to_addrs=row["email"], msg=f"Subject:Birthday Wishes\n\n{hbd}")
