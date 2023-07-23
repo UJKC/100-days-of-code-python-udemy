@@ -26,19 +26,32 @@ class UI_Interface:
         self.false_button = Button(image=falseimage, highlightthickness=0, command=self.false_pressed)
         self.false_button.grid(row=2, column=1)
 
-        self.next_question()
+        self.get_next_question()
 
         self.window.mainloop()
 
-    def next_question(self):
-        q_text = self.quiz.next_question()
-        self.canvas.itemconfig(self.question_text, text=q_text)
-        self.Score_label.config(text=f"Score: {self.quiz.score}")
+    def get_next_question(self):
+        self.canvas.config(bg="white")
+        if self.quiz.still_has_questions():
+            q_text = self.quiz.next_question()
+            self.canvas.itemconfig(self.question_text, text=q_text)
+            self.Score_label.config(text=f"Score: {self.quiz.score}")
+        else:
+            self.canvas.itemconfig(self.question_text, text="You have reached the end")
+            self.true_button.config(state="disabled")
+            self.false_button.config(state="disabled")
 
     def true_pressed(self):
         self.quiz.check_answer("True")
-        self.next_question()
+        self.get_next_question()
 
     def false_pressed(self):
         self.quiz.check_answer("False")
-        self.next_question()
+        self.get_next_question()
+
+    def fact_check(self, is_right):
+        if is_right:
+            self.canvas.config(bg="green")
+        else:
+            self.canvas.config(bg="red")
+        self.window.after(1000, self.get_next_question())

@@ -16,4 +16,4 @@ quiz.still_has_questions()
 quizzer = UI_Interface(quiz)
 
 print("You've completed the quiz")
-print(f"Your final score was: {quiz.score}/{quiz.question_number - 1}")
+print(f"Your final score was: {quiz.score}/{quiz.question_number}")
