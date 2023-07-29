@@ -42,7 +42,7 @@ for exercise in data["exercises"]:
             "duration": exercise["duration_min"],
             "calories": exercise["nf_calories"]
         }
-    }
+    } #You can directly access all elements instead of for loop; Only single element present inside excersises list
 
 response_sheets = requests.post(url=sheety_project_endpoint, json=sheet_inputs)
 response_sheets.raise_for_status()
