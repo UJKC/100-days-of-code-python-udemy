@@ -5,8 +5,8 @@ url_user_endpoint = "https://pixe.la/v1/users"
 
 parameter_post = {
     #curl -X POST https://pixe.la/v1/users -d '{"token":"thisissecret", "username":"a-know", "agreeTermsOfService":"yes", "notMinor":"yes"}'
-    "token": "",
-    "username": "",
+    "token": "ujwalkcspsgmailcom",
+    "username": "ujwal",
     "agreeTermsOfService": "yes",
     "notMinor": "yes"
 }
@@ -51,7 +51,7 @@ parameter_update = {
 #print(response.status_code)
 #print(response.json())
 
-#Add a graph
+#Add a grapg
 #response = requests.post(url= url_graph_endpoint, json=parameter_graph, headers=headers)
 #response.raise_for_status()
 #print(response.status_code)
@@ -63,7 +63,6 @@ parameter_update = {
 #print(response.status_code)
 #print(response.json())
 
-
 #Update the value on particular date
 #response = requests.put(url= url_graph_endpoint_update, json=parameter_update, headers=headers)
 #response.raise_for_status()
@@ -72,6 +71,12 @@ parameter_update = {
 
 #Delete the value on particular date
 #response = requests.delete(url= url_graph_endpoint_update, headers=headers)
+#response.raise_for_status()
+#print(response.status_code)
+#print(response.json())
+
+#Delete a graph
+#response = requests.delete(url= url_graph_endpoint_add, headers=headers)
 #response.raise_for_status()
 #print(response.status_code)
 #print(response.json())
