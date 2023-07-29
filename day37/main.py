@@ -69,3 +69,9 @@ parameter_update = {
 #response.raise_for_status()
 #print(response.status_code)
 #print(response.json())
+
+#Delete the value on particular date
+#response = requests.delete(url= url_graph_endpoint_update, headers=headers)
+#response.raise_for_status()
+#print(response.status_code)
+#print(response.json())
