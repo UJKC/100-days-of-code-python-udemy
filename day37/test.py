@@ -32,7 +32,7 @@ date_today = datetime.datetime.now()
 
 parameter_add = {
     #curl -X POST https://pixe.la/v1/users/a-know/graphs/test-graph -H 'X-USER-TOKEN:thisissecret' -d '{"date":"20180915","quantity":"5"}'
-    "date": "",
+    "date": date_today.strftime('%Y%m%d'),
     "quantity":"3"
 }
 
