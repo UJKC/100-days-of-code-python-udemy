@@ -3,11 +3,11 @@ import datetime
 
 date_time = datetime.datetime.now()
 
-APP_ID = "9fc32c43"
-API_KEY = "cc1032cc3e9072a67adcbf3ab1796877"
+APP_ID = ""
+API_KEY = ""
 
 nutritionix_excersice_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
-sheety_project_endpoint = "https://api.sheety.co/22d264e8ad79207275125e9853aeb27f/copyOfMyWorkouts/workouts"
+sheety_project_endpoint = ""
 
 header = {
     "x-app-id": APP_ID,
