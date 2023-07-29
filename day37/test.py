@@ -5,8 +5,8 @@ url_user_endpoint = "https://pixe.la/v1/users"
 
 parameter_post = {
     #curl -X POST https://pixe.la/v1/users -d '{"token":"thisissecret", "username":"a-know", "agreeTermsOfService":"yes", "notMinor":"yes"}'
-    "token": "ujwalkcspsgmailcom",
-    "username": "ujwal",
+    "token": "",
+    "username": "",
     "agreeTermsOfService": "yes",
     "notMinor": "yes"
 }
