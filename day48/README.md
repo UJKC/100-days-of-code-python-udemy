@@ -7,3 +7,5 @@
 4. Wikipedia scraping
 
 5. Signup to App Brewery newsletter
+
+6. Cookie clicker game
