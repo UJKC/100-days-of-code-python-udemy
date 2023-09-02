@@ -5,3 +5,5 @@
 3. Python.org event dates
 
 4. Wikipedia scraping
+
+5. Signup to App Brewery newsletter
