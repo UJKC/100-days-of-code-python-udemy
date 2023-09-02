@@ -1,32 +1,19 @@
 import requests
+import lxml
 from bs4 import BeautifulSoup
 
-# Function to get the price of an Amazon product by its URL
-def get_amazon_product_price(url):
-    try:
-        # Send a GET request to the Amazon product page
-        response = requests.get(url)
+url = "https://www.amazon.com/dp/B075CYMYK6?psc=1&ref_=cm_sw_r_cp_ud_ct_FM9M699VKHTT47YD50Q6"
+header = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36",
+    "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8"
+}
 
-        # Check if the request was successful
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.content, 'html.parser')
+response = requests.get(url, headers=header)
 
-            # Find the price element using its class
-            price_element = soup.find('span', class_ = "a-offscreen")
+soup = BeautifulSoup(response.content, "lxml")
+print(soup.prettify())
 
-            # Check if the price element was found
-            if price_element:
-                # Extract the price text
-                price = price_element.text.strip()
-                return price
-
-        # If the request was not successful or price not found
-        return "Price not available"
-
-    except Exception as e:
-        return str(e)
-
-# Example usage:
-product_url = "https://www.amazon.com/dp/B075CYMYK6?psc=1&ref_=cm_sw_r_cp_ud_ct_FM9M699VKHTT47YD50Q6"
-product_price = get_amazon_product_price(product_url)
-print("Product Price:", product_price)
+price = soup.find(class_="a-offscreen").get_text()
+price_without_currency = price.split("$")[1]
+price_as_float = float(price_without_currency)
+print(price_as_float)
