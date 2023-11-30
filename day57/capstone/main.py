@@ -23,14 +23,14 @@ def bloger():
         blog_data = blog_data.json()
 
         # Render the template with the obtained data
-        return render_template('blog.html', blog=blog_data)
+        return render_template('index.html', blog=blog_data)
     else:
         # Handle the case where the API request was not successful
         print(f"API request failed with status code: {blog_data.status_code}")
         return render_template('blog.html', message='Failed to retrieve data from the API')
 
-@app.route('/blog/post/<num>')
-def bloger(num):
+@app.route('/blog/post/<int:num>')
+def bloger_defend(num):
 
     # Construct the API URL
     url = "https://api.npoint.io/c790b4d5cab58020d391"
@@ -42,13 +42,14 @@ def bloger(num):
     if blog_data.status_code == 200:
         # Parse the JSON response
         blog_data = blog_data.json()
+        blogs = blog_data[num - 1]
 
         # Render the template with the obtained data
-        return render_template('blog.html', blog=blog_data)
+        return render_template('post.html', blog=blogs)
     else:
         # Handle the case where the API request was not successful
         print(f"API request failed with status code: {blog_data.status_code}")
-        return render_template('blog.html', message='Failed to retrieve data from the API')
+        return render_template('post.html', message='Failed to retrieve data from the API')
 
 if __name__ == "__main__":
     app.run(debug=True)
